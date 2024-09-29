@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="productsLargeReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4f41b002-cc06-4d9d-949a-0ccdd36ad769">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Inv_category" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     cart.`cartId` AS cart_cartId,
+     cart.`INID` AS cart_INID,
+     cart.`productName` AS cart_productName,
+     cart.`Barcode` AS cart_Barcode,
+     cart.`QuantityNeeded` AS cart_QuantityNeeded,
+sum(cart.`QuantityNeeded`) As cart_sumQuantityNeeded,
+     cart.`unit_price` AS cart_unit_price,
+     cart.`Total_price` AS cart_Total_price,
+sum(cart.`Total_price`) As cart_sumTotal_price,
+     cart.`empname` AS cart_empname,
+     cart.`date` AS cart_date,
+     cart.`SaleType` AS cart_SaleType,
+     cart.`productPlace` AS cart_productPlace,
+     products.`productId` AS products_productId,
+     products.`productName` AS products_productName,
+     products.`priceOfBuy` AS products_priceOfBuy,
+     products.`priceOfSale` AS products_priceOfSale,
+     products.`Taked` AS products_Taked,
+     products.`AvailableQty` AS products_AvailableQty,
+     products.`Category` AS products_Category,
+     products.`storeName` AS products_storeName,
+     products.`Note` AS products_Note,
+     products.`priceOfMarket` AS products_priceOfMarket,
+     products.`AvailableQtyStore` AS products_AvailableQtyStore,
+     products.`QuantityWarning` AS products_QuantityWarning,
+     productstypes.`id` AS productstypes_id,
+     productstypes.`productId` AS productstypes_productId,
+     productstypes.`productTypeName` AS productstypes_productTypeName,
+     productstypes.`priceOfBuy` AS productstypes_priceOfBuy,
+     productstypes.`priceOfSale` AS productstypes_priceOfSale,
+     productstypes.`QuantityOfOne` AS productstypes_QuantityOfOne,
+     productstypes.`AllQuantity` AS productstypes_AllQuantity,
+     productstypes.`Category` AS productstypes_Category,
+     productstypes.`priceOfMarket` AS productstypes_priceOfMarket,
+     productstypes.`Note` AS productstypes_Note,
+     productstypes.`AvailableQtyStore` AS productstypes_AvailableQtyStore,
+     productstypes.`QuantityWarning` AS productstypes_QuantityWarning,
+     cart.`category` AS cart_category
+FROM
+     `cart` cart inner Join
+     `productstypes` productstypes on cart.`Barcode`=productstypes.`productId` join
+     `products` products on productstypes.`productId`=products.`productId`
+group by  cart.`productName`]]>
+	</queryString>
+	<field name="cart_cartId" class="java.lang.Integer"/>
+	<field name="cart_INID" class="java.lang.Integer"/>
+	<field name="cart_productName" class="java.lang.String"/>
+	<field name="cart_Barcode" class="java.lang.String"/>
+	<field name="cart_QuantityNeeded" class="java.lang.Double"/>
+	<field name="cart_sumQuantityNeeded" class="java.lang.Double"/>
+	<field name="cart_unit_price" class="java.lang.Double"/>
+	<field name="cart_Total_price" class="java.lang.Double"/>
+	<field name="cart_sumTotal_price" class="java.lang.Double"/>
+	<field name="cart_empname" class="java.lang.String"/>
+	<field name="cart_date" class="java.lang.String"/>
+	<field name="cart_SaleType" class="java.lang.String"/>
+	<field name="cart_productPlace" class="java.lang.String"/>
+	<field name="products_productId" class="java.lang.Integer"/>
+	<field name="products_productName" class="java.lang.String"/>
+	<field name="products_priceOfBuy" class="java.lang.Double"/>
+	<field name="products_priceOfSale" class="java.lang.Double"/>
+	<field name="products_Taked" class="java.lang.Double"/>
+	<field name="products_AvailableQty" class="java.lang.Double"/>
+	<field name="products_Category" class="java.lang.String"/>
+	<field name="products_storeName" class="java.lang.String"/>
+	<field name="products_Note" class="java.lang.String"/>
+	<field name="products_priceOfMarket" class="java.lang.Double"/>
+	<field name="products_AvailableQtyStore" class="java.lang.Double"/>
+	<field name="products_QuantityWarning" class="java.lang.Double"/>
+	<field name="productstypes_id" class="java.lang.Integer"/>
+	<field name="productstypes_productId" class="java.lang.Integer"/>
+	<field name="productstypes_productTypeName" class="java.lang.String"/>
+	<field name="productstypes_priceOfBuy" class="java.lang.Double"/>
+	<field name="productstypes_priceOfSale" class="java.lang.Double"/>
+	<field name="productstypes_QuantityOfOne" class="java.lang.Double"/>
+	<field name="productstypes_AllQuantity" class="java.lang.Double"/>
+	<field name="productstypes_Category" class="java.lang.String"/>
+	<field name="productstypes_priceOfMarket" class="java.lang.Double"/>
+	<field name="productstypes_Note" class="java.lang.String"/>
+	<field name="productstypes_AvailableQtyStore" class="java.lang.Double"/>
+	<field name="productstypes_QuantityWarning" class="java.lang.Double"/>
+	<field name="cart_category" class="java.lang.String"/>
+	<variable name="cart_QuantityNeeded_1" class="java.lang.Double" resetType="Group" resetGroup="cart_productName" calculation="Sum">
+		<variableExpression><![CDATA[$F{cart_QuantityNeeded}]]></variableExpression>
+	</variable>
+	<variable name="cart_QuantityNeeded_2" class="java.lang.Double" resetType="Group" resetGroup="cart_category" calculation="Sum">
+		<variableExpression><![CDATA[$F{cart_QuantityNeeded}]]></variableExpression>
+	</variable>
+	<variable name="cart_sumQuantityNeeded_1" class="java.lang.Double" resetType="Group" resetGroup="cart_category" calculation="Sum">
+		<variableExpression><![CDATA[$F{cart_sumQuantityNeeded}]]></variableExpression>
+	</variable>
+	<group name="cart_category" isStartNewPage="true" minHeightToStartNewPage="2">
+		<groupExpression><![CDATA[$F{cart_category}]]></groupExpression>
+		<groupHeader>
+			<band height="29">
+				<staticText>
+					<reportElement x="451" y="0" width="62" height="24" uuid="6426785f-2641-4efa-a503-928733ab356f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[قسم:]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="SubTitle" x="275" y="0" width="173" height="24" forecolor="#006600" uuid="7d251ba8-bd7e-48b7-b774-870924d03d09"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cart_category}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="cart_category">
+					<reportElement x="0" y="4" width="100" height="20" uuid="637402fe-1e5d-4d4f-b6f3-61e98fe2b98e"/>
+					<textFieldExpression><![CDATA[$V{cart_sumQuantityNeeded_1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="42"/>
+		</groupFooter>
+	</group>
+	<group name="cart_productName" keepTogether="true">
+		<groupExpression><![CDATA[$F{cart_productName}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField>
+					<reportElement style="SubTitle" x="292" y="0" width="116" height="20" uuid="2f3df987-1779-4c0a-a1d7-9d1f9203a1fa"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cart_productName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="408" y="0" width="62" height="20" uuid="a6b30085-9e69-4214-99a6-4e5e7fd31424"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[اسم المنتج:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="10" width="76" height="20" uuid="50e30fde-1d15-441b-b578-fbe87d063b5f"/>
+					<text><![CDATA[اسم المنتج]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="76" y="10" width="83" height="20" uuid="2c711d77-dfc2-405a-9642-44d1c58c5629"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[الكمية المسحوبة]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="4a2abb78-a27d-4758-87bb-15789a47cb33"/>
+				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="bc0d817f-9728-4f13-a9c5-9ca1f8c085da"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Green Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="90b0ecff-477e-49fd-ab8f-724c8c8c005d"/>
+				<text><![CDATA[Leaf Green SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="96" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="20" width="590" height="1" uuid="e2204add-4c9f-4c37-afc0-d7f3b915f455"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="408" y="0" width="100" height="20" uuid="0c1032aa-94e8-4f9b-ad9d-ab4bfc7735e3"/>
+				<textFieldExpression><![CDATA[$F{productstypes_AllQuantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="34" width="100" height="20" uuid="0db032be-b178-4e2b-99c5-8b7100c1e341"/>
+				<textFieldExpression><![CDATA[$F{cart_sumTotal_price}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="433" y="34" width="100" height="20" uuid="01ad01c9-c9c1-4833-b2c4-a64afcb4776c"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[توتال البيع]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="1" width="76" height="20" uuid="59cb90c6-44a2-40a9-83c2-5668fd719892"/>
+				<textFieldExpression><![CDATA[$F{cart_productName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="59" y="54" width="154" height="20" uuid="645f4f0f-a324-48a7-ac0c-825648bdb90c"/>
+				<textFieldExpression><![CDATA[$F{productstypes_AllQuantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="213" y="54" width="163" height="20" uuid="79e0f76d-e0af-471f-b51a-3dff0aa946fb"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{products_AvailableQtyStore}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="1" width="83" height="20" uuid="4479aaba-7613-45bc-83df-cc3370d273b5"/>
+				<textFieldExpression><![CDATA[$F{cart_sumQuantityNeeded}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="508" y="1" width="82" height="20" uuid="63572939-5a9b-44cb-9926-ecebeb8142f5"/>
+				<textFieldExpression><![CDATA[$F{productstypes_AvailableQtyStore}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="2e712036-a3fe-4567-999e-fbaa04bbc20d"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="708f1ac5-a5a5-4f6b-8c92-5a3e14029656"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="4a298668-edf4-4d8d-9dad-aa8fb01a85c9"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

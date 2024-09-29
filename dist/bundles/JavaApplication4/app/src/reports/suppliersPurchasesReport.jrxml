@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="suppliersPurchasesReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ad8eb559-4f65-4ebe-9ac2-24d6965ab88c">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT
+     cartsuppliers.`cartId` AS cartsuppliers_cartId,
+     cartsuppliers.`INID` AS cartsuppliers_INID,
+     cartsuppliers.`productName` AS cartsuppliers_productName,
+     cartsuppliers.`Barcode` AS cartsuppliers_Barcode,
+     cartsuppliers.`companyBarcode` AS cartsuppliers_companyBarcode,
+     cartsuppliers.`QuantityNeeded` AS cartsuppliers_QuantityNeeded,
+     cartsuppliers.`unit_price` AS cartsuppliers_unit_price,
+     cartsuppliers.`Total_price` AS cartsuppliers_Total_price,
+     cartsuppliers.`date` AS cartsuppliers_date,
+     salessuppliers.`SaleId` AS salessuppliers_SaleId,
+     salessuppliers.`INID` AS salessuppliers_INID,
+     salessuppliers.`supplierName` AS salessuppliers_supplierName,
+     salessuppliers.`Total_Quantity` AS salessuppliers_Total_Quantity,
+     salessuppliers.`AllTotal` AS salessuppliers_AllTotal,
+     salessuppliers.`payed` AS salessuppliers_payed,
+     salessuppliers.`Remained` AS salessuppliers_Remained,
+     salessuppliers.`Status` AS salessuppliers_Status,
+     salessuppliers.`casherName` AS salessuppliers_casherName,
+     salessuppliers.`DayDate` AS salessuppliers_DayDate,
+     salessuppliers.`ReceiverName` AS salessuppliers_ReceiverName,
+     salessuppliers.`Note` AS salessuppliers_Note,
+     salessuppliers.`ArrivalDate` AS salessuppliers_ArrivalDate,
+     salessuppliers.`companyAddress` AS salessuppliers_companyAddress,
+     salessuppliers.`storeAddress` AS salessuppliers_storeAddress
+FROM
+     `cartsuppliers` cartsuppliers inner join
+     `salessuppliers` salessuppliers on cartsuppliers.`INID`=salessuppliers.`INID`
+where
+group by cartsuppliers.`INID`]]>
+	</queryString>
+	<field name="cartsuppliers_cartId" class="java.lang.Integer"/>
+	<field name="cartsuppliers_INID" class="java.lang.Integer"/>
+	<field name="cartsuppliers_productName" class="java.lang.String"/>
+	<field name="cartsuppliers_Barcode" class="java.lang.String"/>
+	<field name="cartsuppliers_companyBarcode" class="java.lang.String"/>
+	<field name="cartsuppliers_QuantityNeeded" class="java.lang.Double"/>
+	<field name="cartsuppliers_unit_price" class="java.lang.Double"/>
+	<field name="cartsuppliers_Total_price" class="java.lang.Double"/>
+	<field name="cartsuppliers_date" class="java.lang.String"/>
+	<field name="salessuppliers_SaleId" class="java.lang.Integer"/>
+	<field name="salessuppliers_INID" class="java.lang.Integer"/>
+	<field name="salessuppliers_supplierName" class="java.lang.String"/>
+	<field name="salessuppliers_Total_Quantity" class="java.lang.Double"/>
+	<field name="salessuppliers_AllTotal" class="java.lang.Double"/>
+	<field name="salessuppliers_payed" class="java.lang.Double"/>
+	<field name="salessuppliers_Remained" class="java.lang.Double"/>
+	<field name="salessuppliers_Status" class="java.lang.String"/>
+	<field name="salessuppliers_casherName" class="java.lang.String"/>
+	<field name="salessuppliers_DayDate" class="java.lang.String"/>
+	<field name="salessuppliers_ReceiverName" class="java.lang.String"/>
+	<field name="salessuppliers_Note" class="java.lang.String"/>
+	<field name="salessuppliers_ArrivalDate" class="java.lang.String"/>
+	<field name="salessuppliers_companyAddress" class="java.lang.String"/>
+	<field name="salessuppliers_storeAddress" class="java.lang.String"/>
+	<group name="cartsuppliers_INID">
+		<groupExpression><![CDATA[$F{cartsuppliers_INID}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#006600" uuid="34d98fe1-17ca-467b-8c0b-f69f7c56d515"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cartsuppliers_INID}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="566cc139-46a3-4ce9-8f3c-692cfcc81bdb"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="28"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="663e2240-ac4b-4936-b508-543b8015a3cd"/>
+				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="f3df7b13-31e6-4e84-8ba2-43b6ea79b818"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Green Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="76a67a47-f57f-4046-b356-69c668ea4b14"/>
+				<text><![CDATA[Leaf Green SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="2f5e8d76-16d7-4da5-9c59-fdf6c1e37bf9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="24" height="15" uuid="1f36eacf-fe1d-40a0-813d-0de2b80abe4b"/>
+				<text><![CDATA[cartsuppliers_cartId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="24" y="19" width="24" height="15" uuid="ad660f10-965a-4a00-a84f-8196d676038c"/>
+				<text><![CDATA[cartsuppliers_productName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="48" y="19" width="24" height="15" uuid="230ead40-cac5-406f-91b4-c9d4e1cbad5a"/>
+				<text><![CDATA[cartsuppliers_Barcode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="72" y="19" width="24" height="15" uuid="2e164d4c-588c-4cca-a68e-63e2d28672c1"/>
+				<text><![CDATA[cartsuppliers_companyBarcode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="96" y="19" width="24" height="15" uuid="e74f4e63-22f1-4350-ac11-5e48a9ca84f6"/>
+				<text><![CDATA[cartsuppliers_QuantityNeeded]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="120" y="19" width="24" height="15" uuid="bcd3bf49-1dd1-4966-bae5-98be84800f17"/>
+				<text><![CDATA[cartsuppliers_unit_price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="144" y="19" width="24" height="15" uuid="01741047-22ff-49e9-935a-60ff6103bb60"/>
+				<text><![CDATA[cartsuppliers_Total_price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="168" y="19" width="24" height="15" uuid="18181841-f764-4a37-b80e-2cea7a51d5cd"/>
+				<text><![CDATA[cartsuppliers_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="192" y="19" width="24" height="15" uuid="1dfbeb44-17d6-47a6-bf37-a7df31a4b010"/>
+				<text><![CDATA[salessuppliers_SaleId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="216" y="19" width="24" height="15" uuid="98b1f236-d8a1-4940-b15f-5a3018ee1d2f"/>
+				<text><![CDATA[salessuppliers_INID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="240" y="19" width="24" height="15" uuid="253d23c5-97c2-494c-911f-38321dd7ae50"/>
+				<text><![CDATA[salessuppliers_supplierName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="264" y="19" width="24" height="15" uuid="b7b41d5e-a0d5-46a9-ab35-cf02e784cd45"/>
+				<text><![CDATA[salessuppliers_Total_Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="288" y="19" width="24" height="15" uuid="7f29f3e2-78fc-4031-8359-b40850605257"/>
+				<text><![CDATA[salessuppliers_AllTotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="312" y="19" width="24" height="15" uuid="c14f9822-dfc6-480e-9aba-a915c461e6af"/>
+				<text><![CDATA[salessuppliers_payed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="336" y="19" width="24" height="15" uuid="773d7f1b-84fc-4506-bce7-fecc71364d00"/>
+				<text><![CDATA[salessuppliers_Remained]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="360" y="19" width="24" height="15" uuid="e6592f2f-46dd-42e8-9872-40213c9cf7f8"/>
+				<text><![CDATA[salessuppliers_Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="384" y="19" width="24" height="15" uuid="55beac0f-9fd2-42ef-96a2-b9175673aa67"/>
+				<text><![CDATA[salessuppliers_casherName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="408" y="19" width="24" height="15" uuid="383bec47-cb99-426d-822b-da2527b7bb04"/>
+				<text><![CDATA[salessuppliers_DayDate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="432" y="19" width="24" height="15" uuid="e6b093f3-51fd-4798-96d3-590b4af87550"/>
+				<text><![CDATA[salessuppliers_ReceiverName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="456" y="19" width="24" height="15" uuid="cbdb8447-ef27-451f-af10-05b3bc8bb60f"/>
+				<text><![CDATA[salessuppliers_Note]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="480" y="19" width="24" height="15" uuid="1db37a74-f3c2-490d-a6e3-c32b10e51dcc"/>
+				<text><![CDATA[salessuppliers_ArrivalDate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="504" y="19" width="24" height="15" uuid="950beb50-097b-4b95-b4e0-b50f0d64defc"/>
+				<text><![CDATA[salessuppliers_companyAddress]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="528" y="19" width="24" height="15" uuid="328bb33d-451e-4b63-b747-e04cf2076504"/>
+				<text><![CDATA[salessuppliers_storeAddress]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="bad55a1e-c8ae-4734-bc25-8bef15060531"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="24" height="15" uuid="8e2c7ac5-07fd-4ab9-8940-ebe4fb1a8fb4"/>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_cartId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="24" y="0" width="24" height="15" uuid="e331eff3-7346-4591-83e3-e3f931fd0d06"/>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_productName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="48" y="0" width="24" height="15" uuid="4384ceb6-9847-4b7e-a01c-6bc8e3a52dba"/>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_Barcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="72" y="0" width="24" height="15" uuid="a7d10c5b-5df0-4121-b704-eb73ce1dac14"/>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_companyBarcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="96" y="0" width="24" height="15" uuid="b6ca508c-7a50-4fc9-8da7-ee8c76ae631f"/>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_QuantityNeeded}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="120" y="0" width="24" height="15" uuid="d7edcb18-55f4-46dd-853a-e602d99cdffb"/>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_unit_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="144" y="0" width="24" height="15" uuid="d7f44c8b-1589-4ab3-886e-12c789afefba"/>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_Total_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="168" y="0" width="24" height="15" uuid="7833d86a-0e98-4b80-9019-9a3f10a21985"/>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="192" y="0" width="24" height="15" uuid="6a60c2b3-2650-498b-8a2d-f25663a3e702"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_SaleId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="216" y="0" width="24" height="15" uuid="7bce48fa-28dd-4405-bdc1-e7d4498f6d90"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_INID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="240" y="0" width="24" height="15" uuid="20b71c48-eb4f-4b7a-b581-754dff319649"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_supplierName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="264" y="0" width="24" height="15" uuid="7288f3bd-0277-4c0d-82b5-4211042181cf"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_Total_Quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="288" y="0" width="24" height="15" uuid="22cf26cf-5d23-41e9-983f-dbe0a8cbf751"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_AllTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="312" y="0" width="24" height="15" uuid="1e69b4d0-1cba-42df-99d2-53bf0658bdd0"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_payed}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="336" y="0" width="24" height="15" uuid="3113ec5f-c5ae-4a2a-8123-b477178915ec"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_Remained}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="360" y="0" width="24" height="15" uuid="b66dc7dd-7467-40da-8b25-703f21380e12"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_Status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="384" y="0" width="24" height="15" uuid="1310a0da-ddaa-4513-a2ee-093f7010b907"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_casherName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="408" y="0" width="24" height="15" uuid="f7f08f43-eaeb-4672-a319-9da63bcc7f94"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_DayDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="432" y="0" width="24" height="15" uuid="626f75e8-8bcd-4bb3-b166-37211cafd11b"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_ReceiverName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="456" y="0" width="24" height="15" uuid="6e078cb6-3744-4e31-bcd3-e5d895292447"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_Note}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="480" y="0" width="24" height="15" uuid="1f4cdf03-9a02-4a09-a678-7789782bc5d6"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_ArrivalDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="504" y="0" width="24" height="15" uuid="050d09b1-0baf-43f5-ad65-8da0120936a8"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_companyAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="528" y="0" width="24" height="15" uuid="09a8e7ca-9e71-4a6d-9ee3-858313e10cd0"/>
+				<textFieldExpression><![CDATA[$F{salessuppliers_storeAddress}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="126d56b3-d51d-43fb-98e5-ca7ab789c9a4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="9c684b64-40d4-444c-aa01-c7360b24b56b"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="ecaf8cf8-bd68-49d6-ab5e-409cf773925a"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="d7dcfb97-b26d-450e-b15a-cb8b1d209cf5"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

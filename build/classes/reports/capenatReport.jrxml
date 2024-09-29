@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="capenatReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="77354f21-cb85-4f6b-8e1f-b507a17e5ace">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Inv_date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     capenat.`id` AS capenat_id,
+     capenat.`realValue` AS capenat_realValue,
+     capenat.`editedvalue` AS capenat_editedvalue,
+     capenat.`afterEdictvalue` AS capenat_afterEdictvalue,
+     capenat.`OperationType` AS capenat_OperationType,
+     capenat.`date` AS capenat_date
+FROM
+     `capenat` capenat
+where capenat.`date` like $P{Inv_date}]]>
+	</queryString>
+	<field name="capenat_id" class="java.lang.Integer"/>
+	<field name="capenat_realValue" class="java.lang.Double"/>
+	<field name="capenat_editedvalue" class="java.lang.Double"/>
+	<field name="capenat_afterEdictvalue" class="java.lang.Double"/>
+	<field name="capenat_OperationType" class="java.lang.String"/>
+	<field name="capenat_date" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="300" height="64" uuid="325f85c2-eb0d-4650-8c8f-9ff850fc35e3"/>
+				<imageExpression><![CDATA["lastLogo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="247" y="14" width="100" height="35" forecolor="#FFFFFF" backcolor="#333333" uuid="f8af12ce-4749-43a7-adae-a90e1f6e0e6f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[تقرير الخزنة]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="81f5cc5e-d569-4a37-be1a-04c41b761046"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="92" height="15" uuid="d22c5e28-ac6f-4e27-b8a4-a8f2cd3ccade"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[الخزنة قبل التعديل]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="92" y="19" width="51" height="15" uuid="d762509a-4391-4623-8a3e-fbb5eeb78448"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[قيمة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="143" y="19" width="72" height="15" uuid="7cb80a61-e5aa-4742-b8ba-777536082e18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[الخزنة بعد التعديل]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="215" y="19" width="225" height="15" uuid="67826445-1589-4bb2-86ec-ef44b440a3ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[تفاصيل]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="440" y="19" width="113" height="15" uuid="022a53be-51c0-42d4-bacb-4ce316fef17e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[التاريخ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement style="Detail" mode="Opaque" x="92" y="0" width="51" height="27" forecolor="#FFFFFF" backcolor="#000000" uuid="4daa2bbe-a0ab-4616-945f-505cf5838e0c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capenat_editedvalue}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Opaque" x="143" y="0" width="72" height="27" forecolor="#FFFFFF" backcolor="#666666" uuid="574fbd9d-e4e7-45f7-8951-ddee8f840aaa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capenat_afterEdictvalue}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Opaque" x="0" y="0" width="92" height="27" forecolor="#FFFFFF" backcolor="#666666" uuid="7eb01151-ae50-4bb2-9d37-c0c39874602f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capenat_realValue}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="215" y="0" width="225" height="27" uuid="b77d0ede-9ddc-4f2b-80c3-2adaab6e8ea7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capenat_OperationType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="440" y="0" width="113" height="27" uuid="ac7f950d-a6a6-4207-b254-5155e9f1a7e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capenat_date}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="27" width="553" height="1" uuid="d2ae1160-2744-43ba-bbd5-ca3ea5fc30af"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="946ac858-868f-4907-ad33-f376d4399ca3"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="d16b7ba3-c2fd-4c05-b780-ed117addd3fc"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="5562aa38-bbb1-4da9-b27b-73d572a54004"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="247" y="0" width="126" height="20" uuid="36810310-a675-44c3-b00b-e04bd5705480"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mo_Software:01091499680]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

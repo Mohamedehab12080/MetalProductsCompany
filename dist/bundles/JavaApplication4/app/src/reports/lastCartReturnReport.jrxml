@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lastCartReturnReport" language="groovy" pageWidth="595" pageHeight="500" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4194ab6-c8ca-455c-bf82-ddd6b46e79c6">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="invo_para" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     cartreturn.`cartId` AS cartreturn_cartId,
+     cartreturn.`INID` AS cartreturn_INID,
+     cartreturn.`productName` AS cartreturn_productName,
+     cartreturn.`Barcode` AS cartreturn_Barcode,
+     cartreturn.`QuantityNeeded` AS cartreturn_QuantityNeeded,
+     cartreturn.`unit_price` AS cartreturn_unit_price,
+     cartreturn.`Total_price` AS cartreturn_Total_price,
+     cartreturn.`empname` AS cartreturn_empname,
+     cartreturn.`date` AS cartreturn_date,
+     cartreturn.`SaleType` AS cartreturn_SaleType,
+     cartreturn.`productPlace` AS cartreturn_productPlace,
+     salesreturn.`SaleId` AS salesreturn_SaleId,
+     salesreturn.`INID` AS salesreturn_INID,
+     salesreturn.`customerName` AS salesreturn_customerName,
+     salesreturn.`Total_Quantity` AS salesreturn_Total_Quantity,
+     salesreturn.`payed` AS salesreturn_payed,
+     salesreturn.`Remained` AS salesreturn_Remained,
+     salesreturn.`Date` AS salesreturn_Date,
+     salesreturn.`empname` AS salesreturn_empname,
+     salesreturn.`Discount` AS salesreturn_Discount,
+     salesreturn.`AllTotal` AS salesreturn_AllTotal,
+     salesreturn.`DayDate` AS salesreturn_DayDate,
+     salesreturn.`Total` AS salesreturn_Total,
+     salesreturn.`SaleType` AS salesreturn_SaleType
+FROM
+     `cartreturn` cartreturn inner join
+     `salesreturn` salesreturn on cartreturn.`INID`=salesreturn.`INID`
+where cartreturn.`INID`=$P{invo_para}]]>
+	</queryString>
+	<field name="cartreturn_cartId" class="java.lang.Integer"/>
+	<field name="cartreturn_INID" class="java.lang.Integer"/>
+	<field name="cartreturn_productName" class="java.lang.String"/>
+	<field name="cartreturn_Barcode" class="java.lang.String"/>
+	<field name="cartreturn_QuantityNeeded" class="java.lang.Double"/>
+	<field name="cartreturn_unit_price" class="java.lang.Double"/>
+	<field name="cartreturn_Total_price" class="java.lang.Double"/>
+	<field name="cartreturn_empname" class="java.lang.String"/>
+	<field name="cartreturn_date" class="java.lang.String"/>
+	<field name="cartreturn_SaleType" class="java.lang.String"/>
+	<field name="cartreturn_productPlace" class="java.lang.String"/>
+	<field name="salesreturn_SaleId" class="java.lang.Integer"/>
+	<field name="salesreturn_INID" class="java.lang.Integer"/>
+	<field name="salesreturn_customerName" class="java.lang.String"/>
+	<field name="salesreturn_Total_Quantity" class="java.lang.Double"/>
+	<field name="salesreturn_payed" class="java.lang.Double"/>
+	<field name="salesreturn_Remained" class="java.lang.Double"/>
+	<field name="salesreturn_Date" class="java.lang.String"/>
+	<field name="salesreturn_empname" class="java.lang.String"/>
+	<field name="salesreturn_Discount" class="java.lang.Double"/>
+	<field name="salesreturn_AllTotal" class="java.lang.Double"/>
+	<field name="salesreturn_DayDate" class="java.lang.String"/>
+	<field name="salesreturn_Total" class="java.lang.Double"/>
+	<field name="salesreturn_SaleType" class="java.lang.String"/>
+	<group name="mm">
+		<groupExpression><![CDATA[$F{cartreturn_cartId}]]></groupExpression>
+	</group>
+	<group name="ss"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="784717fd-795e-4f9f-9c35-9cc5f7c11d97"/>
+				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="575492e1-5250-4f5f-ab36-6c4fab005000"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Green Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="bf6e0cef-3b49-4489-8ad5-34c1b0519744"/>
+				<text><![CDATA[Leaf Green SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="17" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="23" height="15" uuid="40977986-fa3b-4dac-9320-8c3ecd7459e7"/>
+				<text><![CDATA[cartreturn_cartId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="23" y="0" width="23" height="15" uuid="26df26c3-ebe9-4812-95da-64e7c69a195b"/>
+				<text><![CDATA[cartreturn_INID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="46" y="0" width="23" height="15" uuid="ab026238-3951-4ff3-975a-ffe9a0921444"/>
+				<text><![CDATA[cartreturn_productName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="69" y="0" width="23" height="15" uuid="1c61f4d0-62f5-4691-8137-8ea166b2083c"/>
+				<text><![CDATA[cartreturn_Barcode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="92" y="0" width="23" height="15" uuid="1636048e-f66d-4d76-83b7-7c4c3fc4f4a3"/>
+				<text><![CDATA[cartreturn_QuantityNeeded]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="115" y="0" width="23" height="15" uuid="474395b1-6838-45aa-a84c-c521d5eb98c1"/>
+				<text><![CDATA[cartreturn_unit_price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="138" y="0" width="23" height="15" uuid="3fa6fe92-0843-4c94-a58e-5bd9a63a130a"/>
+				<text><![CDATA[cartreturn_Total_price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="161" y="0" width="23" height="15" uuid="01ade8a6-f164-4b6c-b6a2-9f39d8fa8420"/>
+				<text><![CDATA[cartreturn_empname]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="184" y="0" width="23" height="15" uuid="906e8c4d-c63d-4ac4-ab70-c7f434a286bc"/>
+				<text><![CDATA[cartreturn_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="207" y="0" width="23" height="15" uuid="3618717c-b46d-4f18-a805-ece0283cbd3e"/>
+				<text><![CDATA[cartreturn_SaleType]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="230" y="0" width="23" height="15" uuid="0d86eecf-94b0-4c28-bbec-1a341a484a54"/>
+				<text><![CDATA[cartreturn_productPlace]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="253" y="0" width="23" height="15" uuid="60e1e2ff-9cf7-4d2e-a783-e9e867a61ec7"/>
+				<text><![CDATA[salesreturn_SaleId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="0" width="23" height="15" uuid="8bf58843-cf4f-4159-9e32-a1fb0a020fa3"/>
+				<text><![CDATA[salesreturn_INID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="299" y="0" width="23" height="15" uuid="bcd402ed-c40a-4520-ac14-a5abf2565f44"/>
+				<text><![CDATA[salesreturn_customerName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="322" y="0" width="23" height="15" uuid="fc620ac3-7e3c-48dc-ace1-5357c7e24b61"/>
+				<text><![CDATA[salesreturn_Total_Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="345" y="0" width="23" height="15" uuid="62b94653-b724-4046-b768-533e42fa0d4b"/>
+				<text><![CDATA[salesreturn_payed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="368" y="0" width="23" height="15" uuid="905bbee2-6bc3-428e-ac02-03b0a4fc2d66"/>
+				<text><![CDATA[salesreturn_Remained]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="391" y="0" width="23" height="15" uuid="2f176210-ad9c-4a00-85f6-14504e6b5560"/>
+				<text><![CDATA[salesreturn_Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="414" y="0" width="23" height="15" uuid="4eaee008-c593-40cf-8f20-b96bc9189b85"/>
+				<text><![CDATA[salesreturn_empname]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="437" y="0" width="23" height="15" uuid="eae4e6ff-04d2-48d7-a4af-4cc09301b68d"/>
+				<text><![CDATA[salesreturn_Discount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="460" y="0" width="23" height="15" uuid="5ce5c6bc-6570-4910-bc8e-75c38724d8ce"/>
+				<text><![CDATA[salesreturn_AllTotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="483" y="0" width="23" height="15" uuid="7c7b64d5-91c8-49a4-9a24-06f19f88a91e"/>
+				<text><![CDATA[salesreturn_DayDate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="506" y="0" width="23" height="15" uuid="485d1064-d877-4ca0-817c-ba37363e861a"/>
+				<text><![CDATA[salesreturn_Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="529" y="0" width="23" height="15" uuid="9b0fa0e7-8a52-45fe-850a-924bda72271b"/>
+				<text><![CDATA[salesreturn_SaleType]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1" uuid="6ef6deba-f4cc-4ccd-ad1d-b067d47c7f1c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="23" height="15" uuid="fec8fe79-2677-42fc-87a2-16a813b3f3ef"/>
+				<textFieldExpression><![CDATA[$F{cartreturn_cartId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="23" y="0" width="23" height="15" uuid="1d7a2b86-2062-4a33-852e-cc97b28b0f0e"/>
+				<textFieldExpression><![CDATA[$F{cartreturn_INID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="46" y="0" width="23" height="15" uuid="9417d71d-e909-4f04-90c2-2ed4853bd76b"/>
+				<textFieldExpression><![CDATA[$F{cartreturn_productName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="69" y="0" width="23" height="15" uuid="6ef88593-472c-4240-b6b5-8693cb25c654"/>
+				<textFieldExpression><![CDATA[$F{cartreturn_Barcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="92" y="0" width="23" height="15" uuid="1e99d2c6-ad2c-4e36-94f4-83a50565123b"/>
+				<textFieldExpression><![CDATA[$F{cartreturn_QuantityNeeded}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="115" y="0" width="23" height="15" uuid="8c59d75f-7778-4afa-ae27-530bbef4875f"/>
+				<textFieldExpression><![CDATA[$F{cartreturn_unit_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="138" y="0" width="23" height="15" uuid="a3f0a505-89c4-4a06-aa92-d822908f3bd0"/>
+				<textFieldExpression><![CDATA[$F{cartreturn_Total_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="161" y="0" width="23" height="15" uuid="4ccc9544-750c-4138-a68f-453b8956ff1b"/>
+				<textFieldExpression><![CDATA[$F{cartreturn_empname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="184" y="0" width="23" height="15" uuid="3196a393-867f-4480-b186-58d572e4de6f"/>
+				<textFieldExpression><![CDATA[$F{cartreturn_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="207" y="0" width="23" height="15" uuid="531ed5e1-517f-43fc-b2dc-a0cf7f78a7f7"/>
+				<textFieldExpression><![CDATA[$F{cartreturn_SaleType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="230" y="0" width="23" height="15" uuid="649a01f2-a50f-4036-b7a3-4d8652826e18"/>
+				<textFieldExpression><![CDATA[$F{cartreturn_productPlace}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="253" y="0" width="23" height="15" uuid="3f9c4de6-e344-4389-9251-d2d304df70f3"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_SaleId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="276" y="0" width="23" height="15" uuid="d0b03e3e-0eff-4833-9887-6797f1033809"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_INID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="299" y="0" width="23" height="15" uuid="6edf8bc4-cb0d-429f-8bd0-ca52e66b6c6f"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_customerName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="322" y="0" width="23" height="15" uuid="e17832a2-7815-4a0c-863a-3f077c00dfb0"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_Total_Quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="345" y="0" width="23" height="15" uuid="4b529de2-418b-4cba-867d-1c062ce3363a"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_payed}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="368" y="0" width="23" height="15" uuid="83556403-6f07-4f00-ba43-95ab3077ed7a"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_Remained}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="391" y="0" width="23" height="15" uuid="e1e45e23-3f43-484f-be18-4176f6d29a7d"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="414" y="0" width="23" height="15" uuid="fff14310-d4e4-4ed3-af44-1fa1391d773c"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_empname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="437" y="0" width="23" height="15" uuid="acedaf17-1b65-4e5b-a310-2c5393459c9e"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_Discount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="460" y="0" width="23" height="15" uuid="fbc15e0e-f66d-48bb-90ad-86b0695981c6"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_AllTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="483" y="0" width="23" height="15" uuid="0edaedd6-210c-49a8-9023-896ff493c370"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_DayDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="506" y="0" width="23" height="15" uuid="e130f909-cf47-47c5-9cdb-9a95c14457ad"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="529" y="0" width="23" height="15" uuid="32546e67-5643-4706-8753-08c9c5c4d1b4"/>
+				<textFieldExpression><![CDATA[$F{salesreturn_SaleType}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1" uuid="b5be8083-010f-4e72-a0d9-c53e19bab25d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

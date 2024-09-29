@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="salesBuysJtableReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7ff3332c-0048-4883-a486-bc94014bb238">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Total" class="java.lang.String"/>
+	<parameter name="dayDate" class="java.lang.String"/>
+	<parameter name="title" class="java.lang.String"/>
+	<parameter name="dateWith" class="java.lang.String"/>
+	<field name="ID" class="java.lang.String"/>
+	<field name="اسم الموظف" class="java.lang.String"/>
+	<field name="كاشير" class="java.lang.String"/>
+	<field name="TOTAL" class="java.lang.String"/>
+	<field name="ملاحظة" class="java.lang.String"/>
+	<field name="تاريخ" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="73" splitType="Stretch">
+			<textField>
+				<reportElement x="215" y="11" width="146" height="24" uuid="86668f04-d7c9-440a-8254-2a9bb4d731b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="361" y="53" width="194" height="20" uuid="f1768ec1-2797-480f-9dcd-80eea2075c89"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dayDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="90" y="53" width="125" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="6f0f0406-7251-4f4f-8d5c-e9c17cd15e7c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="53" width="90" height="20" uuid="be516223-6451-42e8-b8cd-7132a6fc90d0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="361" y="33" width="194" height="20" uuid="4adf055e-330d-4ae1-8907-998fdacce150"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateWith}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="18" width="74" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="b24993aa-20fe-44fa-8d19-a5e318aa2680"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="74" y="18" width="100" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="c8689a3e-f3bf-4179-be9a-f0a314e039b8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[اسم الموظف]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="174" y="18" width="100" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="52523986-f2c3-4c9d-b59e-f385f1a9cc65"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[كاشير]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="274" y="18" width="61" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="7d2c21fa-4c21-45cb-b390-b5d215b04849"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="335" y="18" width="123" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="9a895687-d6e9-42d8-8840-e33adac68dbf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ملاحظة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="458" y="18" width="115" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="fc56ff11-29f4-487a-9700-e9c241262ddc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[تاريخ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="573" height="18" uuid="c4819b35-d292-48ae-bc24-f2d77f11820c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[***************************************************************************************************************************************************]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="6" width="74" height="20" uuid="df159cc8-394c-4c79-ad4b-d76f8ac040bb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="74" y="6" width="100" height="20" uuid="5747ceca-1ce4-4dd8-8cde-f039fc29a06e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{اسم الموظف}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="174" y="6" width="100" height="20" uuid="a161dc47-47e5-4f9d-9982-3b6600ab30ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{كاشير}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="274" y="6" width="61" height="20" uuid="4e04ea2b-fad4-48c7-a3bb-97b3810adcce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="6" width="123" height="20" uuid="02221cb7-4bea-4f87-8d78-02a20d2948df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ملاحظة}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="6" width="115" height="31" uuid="22a89b8b-a220-44ff-8fb5-25450d4b66dd"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{تاريخ}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="1" width="573" height="1" uuid="f93b8ee4-9afd-4b09-838c-b4f435d2583b"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

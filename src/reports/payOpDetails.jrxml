@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="payOpDetails" language="groovy" pageWidth="605" pageHeight="700" columnWidth="565" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b93484cb-2d8d-4c46-8550-25b1e7dd27fd">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="customer_Name" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pay_Id1" class="java.util.Collection">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="رقم التسديد" class="java.lang.Long"/>
+	<field name="اسم العميل" class="java.lang.String"/>
+	<field name="المتبقي" class="java.lang.Integer"/>
+	<field name="المدفوع" class="java.lang.Integer"/>
+	<field name="اسم الموظف" class="java.lang.String"/>
+	<field name="التاريخ" class="java.lang.String"/>
+	<variable name="المدفوع_SUM" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{المدفوع}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="228" y="0" width="118" height="33" uuid="a038120f-a857-4ca3-aa79-55989c17aec1"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[تقرير سداد:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="209" y="33" width="159" height="20" uuid="070051fa-5a5b-4137-9147-013f32574072"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="92" height="15" uuid="70d5a8e4-fcaa-492f-94dc-9bd8868540f1"/>
+				<text><![CDATA[رقم التسديد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="92" y="19" width="136" height="15" uuid="366744bf-090e-4a03-9bfb-2bb2f1b98116"/>
+				<text><![CDATA[اسم العميل]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="228" y="19" width="48" height="15" uuid="d9511130-01a5-4c42-bf07-482081d39b41"/>
+				<text><![CDATA[المتبقي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="19" width="92" height="15" uuid="48af8f6b-8c33-49e1-b2de-5276ad5339d9"/>
+				<text><![CDATA[المدفوع]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="368" y="19" width="92" height="15" uuid="317a5dde-1474-474d-b413-079d3e01f1a8"/>
+				<text><![CDATA[اسم الموظف]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="460" y="19" width="125" height="15" uuid="dc0a4bf5-b4f0-41bf-bb8d-318efdf954d0"/>
+				<text><![CDATA[التاريخ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="35" width="585" height="1" uuid="a9e91a09-0078-44f6-98c2-7c0017b2720f"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="3" width="92" height="18" uuid="5ac9f8d1-6672-41c5-b6c2-9c05493fa755"/>
+				<textFieldExpression><![CDATA[$F{رقم التسديد}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="3" width="136" height="17" uuid="616dd11b-626f-4ef9-80e3-c9ea040da05e"/>
+				<textFieldExpression><![CDATA[$F{اسم العميل}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="3" width="47" height="17" uuid="1ad6d5e4-b5db-4ea0-b4d4-18d379e55c02"/>
+				<textFieldExpression><![CDATA[$F{المتبقي}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="3" width="92" height="17" uuid="353f72b0-7198-4ca5-aac0-4c45b59236c3"/>
+				<textFieldExpression><![CDATA[$F{المدفوع}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="3" width="92" height="17" uuid="64a4889b-d0c3-4b93-9c50-628a9f358900"/>
+				<textFieldExpression><![CDATA[$F{اسم الموظف}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="3" width="125" height="26" uuid="f0fb2b06-f294-4751-87e9-52787e4baaa9"/>
+				<textFieldExpression><![CDATA[$F{التاريخ}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="585" height="1" uuid="0f5af2e4-8461-43e2-ab38-6e561479bd4c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="18" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="585" height="1" uuid="6433f264-6c7f-4210-8e0b-942d33b29818"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="445" y="0" width="80" height="20" uuid="39f307da-51cb-4416-aab0-bda22b4d6bbd"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="525" y="0" width="40" height="20" uuid="72545533-f739-4b19-a7ec-4e4a7082a661"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

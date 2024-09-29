@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="paySuppliersArrival" language="groovy" pageWidth="270" pageHeight="842" columnWidth="230" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ef761521-3c08-42da-9422-ce175a76c1ee">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Inv_para" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     payoperationforsuppliers.`id` AS payoperationforsuppliers_id,
+     payoperationforsuppliers.`supplierName` AS payoperationforsuppliers_supplierName,
+     payoperationforsuppliers.`receiverName` AS payoperationforsuppliers_receiverName,
+     payoperationforsuppliers.`remainedBefor` AS payoperationforsuppliers_remainedBefor,
+     payoperationforsuppliers.`remainedAfter` AS payoperationforsuppliers_remainedAfter,
+     payoperationforsuppliers.`payed` AS payoperationforsuppliers_payed,
+     payoperationforsuppliers.`operationdetails` AS payoperationforsuppliers_operationdetails,
+     payoperationforsuppliers.`date` AS payoperationforsuppliers_date,
+     payoperationforsuppliers.`purchaseNumber` AS payoperationforsuppliers_purchaseNumber
+FROM
+     `payoperationforsuppliers` payoperationforsuppliers
+WHERE
+     payoperationforsuppliers.`id` = $P{Inv_para}]]>
+	</queryString>
+	<field name="payoperationforsuppliers_id" class="java.lang.Integer"/>
+	<field name="payoperationforsuppliers_supplierName" class="java.lang.String"/>
+	<field name="payoperationforsuppliers_receiverName" class="java.lang.String"/>
+	<field name="payoperationforsuppliers_remainedBefor" class="java.lang.Double"/>
+	<field name="payoperationforsuppliers_remainedAfter" class="java.lang.Double"/>
+	<field name="payoperationforsuppliers_payed" class="java.lang.Double"/>
+	<field name="payoperationforsuppliers_operationdetails" class="java.lang.String"/>
+	<field name="payoperationforsuppliers_date" class="java.lang.String"/>
+	<field name="payoperationforsuppliers_purchaseNumber" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="433" splitType="Stretch">
+			<image>
+				<reportElement x="41" y="0" width="189" height="134" uuid="7d2c777d-dc91-4406-b6d6-820c3b55eb8b"/>
+				<imageExpression><![CDATA["lastLogo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="20" y="129" width="210" height="35" uuid="9b2dd306-4eac-48b9-be1d-7c257e1074c2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[الشركة الحديثة لمواد البناء والعدد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="113" y="178" width="117" height="22" uuid="4062f77d-b732-40f4-ab6b-d8aa37e9842f"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[فاتورة استلام نقدية:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="20" y="178" width="93" height="22" uuid="3b229018-18a5-4a1c-bf92-1d161b91c8a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payoperationforsuppliers_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="31" y="247" width="118" height="15" uuid="2cedf15e-7b35-4c23-90f3-ec775d15427e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payoperationforsuppliers_supplierName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="20" y="211" width="93" height="15" uuid="4b343480-844d-444d-b132-91b42ba95dd5"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payoperationforsuppliers_purchaseNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="20" y="163" width="210" height="15" uuid="5d3c8b7d-c355-4263-80cb-83d985521396"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payoperationforsuppliers_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="149" y="247" width="81" height="15" uuid="b54d15b5-62ba-48ae-ad08-fe439c132a76"/>
+				<text><![CDATA[اسم المستلم:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="113" y="211" width="117" height="15" uuid="c07b266a-453e-47e5-ade1-c5e271391e18"/>
+				<text><![CDATA[رقم طلب الشراء:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="31" y="263" width="118" height="16" uuid="8a991843-ec51-488c-8baf-46aaa27589e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payoperationforsuppliers_receiverName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="149" y="263" width="81" height="15" uuid="4197675f-e54f-4c2c-a0a1-87e07273ce70"/>
+				<text><![CDATA[اسم المسدد:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="20" y="262" width="199" height="1" forecolor="#FFFFFF" uuid="1fd3c895-ae4d-44ac-8346-9bf802283209"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" mode="Opaque" x="31" y="279" width="118" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="ac766406-c37f-4b8c-b2a9-2e365d084f78"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payoperationforsuppliers_remainedBefor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="149" y="278" width="81" height="15" uuid="9816c4e6-f9f1-43e9-969f-1235d4252f73"/>
+				<text><![CDATA[المتبقي قبل الدفع:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="149" y="293" width="81" height="15" uuid="cd9c86a9-c1e1-4e3f-b435-42302fa6e718"/>
+				<text><![CDATA[تم دفع:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" mode="Opaque" x="31" y="294" width="118" height="15" backcolor="#999999" uuid="b0720dbd-b79a-45be-b460-d59b948f6f8b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payoperationforsuppliers_payed}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Opaque" x="31" y="308" width="118" height="15" backcolor="#CCCCCC" uuid="bdc6b3fc-6b0e-4beb-b72d-849bf7b76041"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payoperationforsuppliers_remainedAfter}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="0" y="325" width="230" height="48" uuid="c7042c70-c98b-43b9-984f-4041d7ab5513"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{payoperationforsuppliers_operationdetails}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="20" y="413" width="159" height="15" uuid="e4af3e14-17a2-4dc5-8c33-21dcc5ce87e4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Mo_Software:01091499680]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="413" width="20" height="15" uuid="51689a9b-8d0b-425b-b895-5c17913faa24"/>
+				<imageExpression><![CDATA["Mo_Software.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="181" y="373" width="49" height="20" uuid="bf306015-1b81-48a4-a79c-fdf9e31376ca"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[توقيع:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="66" y="392" width="115" height="1" uuid="d44f9db7-3e53-4b61-9ef5-d23513e3dd70"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="149" y="309" width="81" height="15" uuid="43860bd8-5827-483a-a86d-d13389fdcdd0"/>
+				<text><![CDATA[المتبقي بعد الدفع:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

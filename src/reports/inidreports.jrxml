@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inidreports" language="groovy" pageWidth="690" pageHeight="600" columnWidth="650" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d2a25da8-80b2-4780-806b-9aa36bbc3662">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="dayDate" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="رقم الفاتورة" class="java.lang.Integer"/>
+	<field name="اسم العميل" class="java.lang.String"/>
+	<field name="الكمية الكلية" class="java.lang.String"/>
+	<field name="المدفوع الكلي" class="java.lang.String"/>
+	<field name="خصم" class="java.lang.String"/>
+	<field name="الحالة" class="java.lang.String"/>
+	<field name="المتبقي" class="java.lang.String"/>
+	<field name="موظف" class="java.lang.String"/>
+	<field name="التاريخ" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="103" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="197" y="13" width="263" height="33" uuid="25def42d-5453-4980-8e41-1612e1ab6bf8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[تقرير مبيعات]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="266" y="58" width="128" height="20" uuid="ec9d0ffb-de53-4e95-a9ff-26546c320c22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{dayDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="-22" y="19" width="41" height="15" uuid="a61b3248-e425-4d87-b77a-7d1b0a50f343"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-22" y="35" width="625" height="1" uuid="bea23260-b7d1-44fc-a46c-937392162408"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="80" y="19" width="148" height="15" uuid="b17d16ae-75f0-4eaa-bf79-f85570f79e83"/>
+				<text><![CDATA[اسم العميل]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="412" y="21" width="44" height="15" uuid="684320e9-2b41-4843-9ecd-0bda6d0b5ff5"/>
+				<text><![CDATA[المتبقي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="268" y="20" width="61" height="15" uuid="f7d2fbfd-9ac1-43ac-a15f-be869d393c64"/>
+				<text><![CDATA[المدفوع]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="19" y="19" width="61" height="15" uuid="eb51ba5a-f4e7-4465-aca7-a0f9f084f0a5"/>
+				<text><![CDATA[رقم الفاتورة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="329" y="21" width="45" height="15" uuid="d8d73606-4c33-452d-b3f4-0c49a8d653ce"/>
+				<text><![CDATA[خصم]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="498" y="20" width="165" height="14" uuid="439cb173-da9c-4cfc-a480-eac1acf3c54a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[التاريخ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="228" y="20" width="39" height="15" uuid="58a8abf3-56bc-43fe-9a0d-e89824db27c9"/>
+				<text><![CDATA[الكمية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="375" y="21" width="37" height="14" uuid="929979bb-4a0c-4944-af3f-cb8a00a6a470"/>
+				<text><![CDATA[الحالة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="457" y="21" width="41" height="13" uuid="a793b18c-fda3-4ccd-943f-7c585fac7699"/>
+				<text><![CDATA[موظف]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-20" y="31" width="625" height="1" uuid="64883d8e-5825-4bd8-828c-38adff08d95f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="267" y="0" width="61" height="20" uuid="5a58e2c6-2ede-445f-85f0-709f3b5f307c"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{المدفوع الكلي}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="0" width="44" height="20" uuid="a51e2280-c7ee-4ef1-a6bd-7d3e5cf75e79"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{المتبقي}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="328" y="0" width="45" height="20" uuid="c14869b5-2f09-46c2-8404-f1adbbbbaef5"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{خصم}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="374" y="0" width="37" height="20" uuid="cffd53a6-090b-4440-8310-3d544a7600ee"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{الحالة}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="79" y="0" width="148" height="20" uuid="9ba26897-ea83-49f3-9bc2-719614479626"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{اسم العميل}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="0" width="39" height="20" uuid="1fe9e0d2-5f60-41bf-a3c0-10219714adda"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{الكمية الكلية}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="0" width="61" height="20" uuid="f516440e-866b-4536-9ac2-e249ab38e9b8"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{رقم الفاتورة}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="43" height="20" uuid="895c8ef0-cdd9-4451-ab9d-a3dcd035bbfe"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{موظف}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="498" y="0" width="165" height="20" uuid="367683be-eade-49d7-a270-9a9172983cbe"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{التاريخ}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="605" height="1" uuid="f1b286e5-8cc3-436f-a79c-59f887158ecc"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="-20" y="-32" width="39" height="20" uuid="1f12c153-10f6-4349-bc8a-59b37564ab5e"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="ef0a3bec-71a9-49ab-ab9a-96ce1816d13e"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Column header" x="475" y="0" width="80" height="20" uuid="fe23da1a-4a10-48f4-aa21-5aaeda473683"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="565" y="0" width="40" height="20" uuid="8891a682-58ed-4a21-bac9-8c453ec3d668"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="263" y="0" width="162" height="20" uuid="9260886e-334b-4b4b-b4c2-f3a7adfd1bb4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MO_Software: 01091499680]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

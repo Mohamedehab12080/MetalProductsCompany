@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="salaryTakedReport" language="groovy" pageWidth="595" pageHeight="550" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5ad12e71-6d79-4070-b5ef-ef3eabfe55ef">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Inv_empName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="apsent_Days" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     salary.`id` AS salary_id,
+     salary.`employeeName` AS salary_employeeName,
+     salary.`empType` AS salary_empType,
+     salary.`Taked` AS salary_Taked,
+     salary.`remainedSalary` AS salary_remainedSalary,
+     salary.`Note` AS salary_Note,
+     salary.`date` AS salary_date,
+     salary.`operationType` AS salary_operationType,
+     employees.`salary` AS employees_salary,
+((employees.`salary`-salary.`Taked`)-salary.`remainedSalary`) As operation,
+     employees.`employeeName` AS employees_employeeName
+FROM
+     `salary` salary inner join
+     `employees` employees on salary.`employeeName`=employees.`employeeName`
+WHERE
+     salary.`id` = $P{Inv_empName}]]>
+	</queryString>
+	<field name="salary_id" class="java.lang.Integer"/>
+	<field name="salary_employeeName" class="java.lang.String"/>
+	<field name="salary_empType" class="java.lang.String"/>
+	<field name="salary_Taked" class="java.lang.Double"/>
+	<field name="salary_remainedSalary" class="java.lang.Double"/>
+	<field name="salary_Note" class="java.lang.String"/>
+	<field name="salary_date" class="java.lang.String"/>
+	<field name="salary_operationType" class="java.lang.String"/>
+	<field name="employees_salary" class="java.lang.Double"/>
+	<field name="operation" class="java.lang.Double"/>
+	<field name="employees_employeeName" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="261" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="391" height="110" uuid="35b59e5f-f3a5-4e87-a529-eef25464f834"/>
+				<imageExpression><![CDATA["lastLogo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="192" y="0" width="263" height="33" uuid="76f6f2e7-7e87-460a-9199-46ce3abc80f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[الشركة الحديثة لمواد البناء]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" mode="Opaque" x="298" y="140" width="157" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="1c1f6bf3-2411-46d1-a5aa-4e9cfd1dd050"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salary_employeeName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Opaque" x="298" y="169" width="157" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="70abb7e7-4d8c-4bca-829e-d1416ebe71f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salary_empType}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="0" y="194" width="174" height="61" uuid="3bcec51c-eac5-404b-b786-05f3f6aef8e0"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{salary_Note}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Opaque" x="15" y="169" width="159" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="90321934-074b-48dd-addd-eff051bee327"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salary_remainedSalary}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Opaque" x="15" y="140" width="159" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="1aafac50-a232-4979-bb12-ff783ab1a5e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salary_Taked}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="455" y="140" width="100" height="20" uuid="233ce802-c630-452a-86fd-1e9eced4f011"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[اسم الموظف:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="169" width="100" height="20" uuid="e7fbbd07-cedd-4671-9e2a-206113a5d331"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[طبيعة العمل:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="174" y="140" width="100" height="20" uuid="30e925e4-bf01-445f-9ae4-d05c4e5223b1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المسحوب الان:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="174" y="169" width="100" height="20" uuid="f346dc4a-0e4e-460e-a73c-918d703ffac2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المتبقي من المرتب:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="174" y="194" width="100" height="20" uuid="78352d25-b396-4867-8482-d47bbf801b9b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ملاحظة:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="194" width="100" height="20" uuid="1953f1c4-4a4e-4347-8f4f-7c6f67b1188d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[توقيع:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="298" y="213" width="157" height="1" uuid="8fd7849d-f184-40f2-b849-5cd78874d728"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="393" y="76" width="162" height="20" uuid="5f670692-ae3e-4fa3-8f56-7a95a8569d0e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salary_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="326" y="46" width="129" height="20" uuid="9a25c05b-12ce-4d02-9893-af86596a8ac2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salary_operationType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="76" width="63" height="20" uuid="c339170d-ac87-41c1-a3a0-c5bd3cc28040"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{apsent_Days}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="226" y="46" width="100" height="20" uuid="93291e5a-6ce4-4ea0-aef8-c2fe8aab2e48"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Inv_empName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" mode="Opaque" x="15" y="110" width="159" height="20" forecolor="#FFFFFF" backcolor="#666666" uuid="790267cf-8532-422c-a4d5-aef533d81824"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{operation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="174" y="110" width="100" height="20" uuid="5d0855b5-1145-4532-ae79-bd2cfe116205"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المسحوب مسبقا:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="76" width="100" height="20" uuid="54873a37-8dec-4dba-8b5e-2b640b4169d0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ايام الغياب:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="c8a79e7f-20e6-4326-a5fa-12b27e73c4c2"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="45be7afd-5d32-4634-80a8-4451bb241c3a"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="163" height="20" uuid="20396431-3ca0-46de-b60a-a285acacb07c"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

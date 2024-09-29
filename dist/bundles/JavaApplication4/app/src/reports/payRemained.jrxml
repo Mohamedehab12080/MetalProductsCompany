@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="payRemained" language="groovy" pageWidth="300" pageHeight="350" columnWidth="260" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1dd0d90e-abc7-4122-a8a5-630439f65bb5">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="invo_para" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     payremained_A.`payId` AS payremained_payId,
+     payremained_A.`INID` AS payremained_INID,
+     payremained_A.`Customername` AS payremained_Customername,
+     payremained_A.`Remained` AS payremained_Remained,
+     payremained_A.`payed` AS payremained_payed,
+     payremained_A.`date` AS payremained_date,
+     payremained_A.`empname` AS payremained_empname
+FROM
+     `payremained` payremained_A
+WHERE
+     payremained_A.`INID` = $P{invo_para}]]>
+	</queryString>
+	<field name="payremained_payId" class="java.lang.Long"/>
+	<field name="payremained_INID" class="java.lang.Long"/>
+	<field name="payremained_Customername" class="java.lang.String"/>
+	<field name="payremained_Remained" class="java.lang.Integer"/>
+	<field name="payremained_payed" class="java.lang.Integer"/>
+	<field name="payremained_date" class="java.lang.String"/>
+	<field name="payremained_empname" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<image>
+				<reportElement x="182" y="0" width="62" height="38" uuid="3cfc3164-8cba-4803-a385-445f31c51a97"/>
+				<imageExpression><![CDATA["salary.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="118" y="14" width="64" height="24" uuid="10731faf-42b1-48ce-949d-bfe26f5e4987"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[فاتورة:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="168" y="55" width="64" height="15" uuid="b69b338b-55f7-46bd-8e58-c6e4e40f036c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[تاريخ:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="6" y="15" width="112" height="23" uuid="4a953834-e9a7-47dd-a3ea-8208cb3b46d5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payremained_INID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="168" y="42" width="64" height="15" uuid="0aec3fc1-0168-49db-8820-67958b412439"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[اسم العميل:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="6" y="55" width="162" height="15" uuid="15d1d534-b53f-4107-af43-10b00f3d9e05"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{payremained_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="6" y="42" width="162" height="15" uuid="4a53dcdc-7d2b-4c5b-b17c-9a9ba6a655e8"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{payremained_Customername}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="6" y="70" width="162" height="15" uuid="9f54e3cd-b315-4b1f-9a18-7536dc5f16fb"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{payremained_A_empname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="168" y="70" width="37" height="15" uuid="c5e67f5e-1c32-4fd1-90c3-241eed47116b"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[موظف:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="48" height="15" uuid="07ff94bf-f8f4-4b24-90c4-fcbaab8e4834"/>
+				<text><![CDATA[رقم التسديد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="48" y="19" width="92" height="15" uuid="892d3977-30d9-441a-af90-b2a0f9360c09"/>
+				<text><![CDATA[المتبقي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="140" y="19" width="92" height="15" uuid="95269789-b3b9-44fe-9e9d-1cde0ea95bf0"/>
+				<text><![CDATA[المدفوع]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="14" width="232" height="2" uuid="fc6bf098-1579-40ea-880e-50aa05f6e8e4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="48" height="15" uuid="07fa5ab9-1db5-4905-b458-d70b04a43364"/>
+				<textFieldExpression><![CDATA[$F{payremained_payId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="140" y="0" width="92" height="15" uuid="ca345c95-f35b-43e7-b2d7-5e4eb9941eb0"/>
+				<textFieldExpression><![CDATA[$F{payremained_payed}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="48" y="1" width="92" height="15" uuid="c90fac10-fb21-4d35-9547-bf6bdb6c714d"/>
+				<textFieldExpression><![CDATA[$F{payremained_Remained}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="140" y="22" width="80" height="20" uuid="ac31a71a-f230-4909-961e-1d3f801cbebc"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="220" y="22" width="40" height="20" uuid="0722f8d5-8f22-4901-8543-411281a590fe"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="118" y="0" width="142" height="20" uuid="dce384c4-16e3-4fa5-9e2a-fad1adf78abc"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MO_Software:01091499680]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="260" height="1" uuid="dd487a72-7743-4ad7-a849-2b1de9757db5"/>
+			</line>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="118" height="20" uuid="34ebb64d-a08b-49b8-bb98-7a2676d813ac"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="suppliersReport" language="groovy" pageWidth="220" pageHeight="650" columnWidth="210" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" uuid="5c834b26-5829-4e7a-b6dd-ac60672aa87e">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Inv_Type" class="java.lang.String"/>
+	<parameter name="Inv_para" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     cartsuppliers.`INID` AS cartsuppliers_INID,
+     cartsuppliers.`productName` AS cartsuppliers_productName,
+     cartsuppliers.`Barcode` AS cartsuppliers_Barcode,
+     cartsuppliers.`QuantityNeeded` AS cartsuppliers_QuantityNeeded,
+     cartsuppliers.`unit_price` AS cartsuppliers_unit_price,
+     cartsuppliers.`Total_price` AS cartsuppliers_Total_price,
+     cartsuppliers.`date` AS cartsuppliers_date,
+     salessuppliers.`INID` AS salessuppliers_INID,
+     salessuppliers.`supplierName` AS salessuppliers_supplierName,
+     salessuppliers.`Total_Quantity` AS salessuppliers_Total_Quantity,
+     salessuppliers.`AllTotal` AS salessuppliers_AllTotal,
+     salessuppliers.`payed` AS salessuppliers_payed,
+     salessuppliers.`Remained` AS salessuppliers_Remained,
+     salessuppliers.`Status` AS salessuppliers_Status,
+     salessuppliers.`casherName` AS salessuppliers_casherName,
+     salessuppliers.`Note` AS salessuppliers_Note,
+     salessuppliers.`ReceiverName` AS salessuppliers_ReceiverName
+FROM
+     `cartsuppliers` cartsuppliers INNER JOIN `salessuppliers` salessuppliers ON cartsuppliers.`INID` = salessuppliers.`INID`
+WHERE
+     cartsuppliers.`INID` = $P{Inv_para}]]>
+	</queryString>
+	<field name="cartsuppliers_INID" class="java.lang.Integer"/>
+	<field name="cartsuppliers_productName" class="java.lang.String"/>
+	<field name="cartsuppliers_Barcode" class="java.lang.String"/>
+	<field name="cartsuppliers_QuantityNeeded" class="java.lang.Double"/>
+	<field name="cartsuppliers_unit_price" class="java.lang.Double"/>
+	<field name="cartsuppliers_Total_price" class="java.lang.Double"/>
+	<field name="cartsuppliers_date" class="java.lang.String"/>
+	<field name="salessuppliers_INID" class="java.lang.Integer"/>
+	<field name="salessuppliers_supplierName" class="java.lang.String"/>
+	<field name="salessuppliers_Total_Quantity" class="java.lang.Double"/>
+	<field name="salessuppliers_AllTotal" class="java.lang.Double"/>
+	<field name="salessuppliers_payed" class="java.lang.Double"/>
+	<field name="salessuppliers_Remained" class="java.lang.Double"/>
+	<field name="salessuppliers_Status" class="java.lang.String"/>
+	<field name="salessuppliers_casherName" class="java.lang.String"/>
+	<field name="salessuppliers_ReceiverName" class="java.lang.String"/>
+	<field name="salessuppliers_Note" class="java.lang.String"/>
+	<variable name="cartsuppliers_productName_1" class="java.lang.Integer" resetType="Group" resetGroup="myg" calculation="Count">
+		<variableExpression><![CDATA[$F{cartsuppliers_productName}]]></variableExpression>
+	</variable>
+	<group name="myg">
+		<groupFooter>
+			<band height="243">
+				<textField isStretchWithOverflow="true">
+					<reportElement x="5" y="12" width="63" height="20" uuid="e0ef1430-91f3-455a-83ec-9489ccdfd443"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{cartsuppliers_productName_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="68" y="12" width="37" height="20" uuid="0bcceb24-59fe-4c3d-8e03-e5d1b5725776"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[اصناف:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="166" y="12" width="30" height="20" uuid="3fd161f6-9e86-4711-a936-6f890078ca4a"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[اجمالي:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="109" y="12" width="57" height="20" uuid="d76a7e64-828e-49c8-b40a-5f6d4d0ad3fb"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{salessuppliers_AllTotal}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="109" y="42" width="57" height="20" uuid="73aa313d-9632-469c-9282-958faa561ec3"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{salessuppliers_payed}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="5" y="32" width="191" height="10" uuid="3056c519-9962-418b-8250-786d1ae705ef"/>
+					<graphicElement>
+						<pen lineWidth="3.25" lineColor="#FFFFFF"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="166" y="42" width="30" height="20" uuid="fcfaf483-6f43-47d4-a3ef-ba6d66aadc9b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[تم دفع:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="5" y="42" width="63" height="20" uuid="46a9c2e9-6fcb-40af-8df9-f2465ad46557"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{salessuppliers_Remained}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="68" y="42" width="37" height="20" uuid="04a7d23e-10ab-40dd-858b-99af4ad1bcd4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[متبقي:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="166" y="74" width="30" height="20" uuid="978aabd9-5bcb-4962-b8a8-f01532b356ca"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[المستلم:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="115" y="74" width="51" height="20" uuid="ac0ba879-ebee-44a3-937d-94f0dfaa7724"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{salessuppliers_ReceiverName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="68" y="74" width="45" height="20" uuid="220b5621-2509-4e4b-9785-c86d154a5815"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[توقيع:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="93" width="68" height="1" uuid="552251e5-42bf-440e-b70d-438092e4882a"/>
+					<graphicElement>
+						<pen lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+				<image>
+					<reportElement x="0" y="104" width="157" height="56" uuid="f09282db-3858-44cd-8459-348e3fe57e39"/>
+					<imageExpression><![CDATA["barcode.jpg"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="68" y="223" width="128" height="20" uuid="ef73852f-0a5c-4889-a6f7-e0e9b1fe9ee7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Mo_Software:01091499680]]></text>
+				</staticText>
+				<image>
+					<reportElement x="53" y="223" width="15" height="20" uuid="03e5a522-d424-47cc-9902-cdb121d1083e"/>
+					<imageExpression><![CDATA["Mo_Software.png"]]></imageExpression>
+				</image>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="5" y="160" width="180" height="27" uuid="b9a00a3e-1465-4d33-964e-c0decd87712e"/>
+					<textElement textAlignment="Center" verticalAlignment="Top"/>
+					<textFieldExpression><![CDATA[$F{salessuppliers_Note}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="251" splitType="Stretch">
+			<image>
+				<reportElement x="53" y="0" width="88" height="91" uuid="8a313645-cafb-4c23-93e2-7e65d6631f04"/>
+				<imageExpression><![CDATA["lastLogo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="20" y="91" width="165" height="20" uuid="6cbb13a8-97ac-444b-be2f-6440e2cb037d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الشركة الحديثة لمواد البناء والعدد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="173" width="75" height="20" uuid="678f9031-025b-4853-9a34-52322cf0bcd7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[اسم المورد:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="143" width="75" height="20" uuid="85227efc-6a06-4d08-bc6f-e83917984b4d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[كاشير:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="111" width="75" height="22" uuid="7d6f6613-3229-42f5-bcdb-09ec1711c4e4"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Inv_Type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="111" width="90" height="22" uuid="0a2fa69e-e67c-4c81-aaac-836beaeb0085"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_INID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="143" width="90" height="20" uuid="45a2c919-8c91-4964-9d94-22ffd7d48494"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salessuppliers_casherName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="173" width="90" height="20" uuid="6d2603ae-675a-4484-8299-afe6c4497c4e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salessuppliers_supplierName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="231" width="192" height="20" uuid="31b7690f-1aef-4334-9c98-84369aa60091"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="204" width="137" height="19" uuid="d03323c5-74c1-46e2-b282-6302afefca09"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salessuppliers_Status}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="138" y="203" width="58" height="20" uuid="d759e9b8-2c92-42bf-b7da-f743a8e81b2a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الحالة:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="18" width="68" height="20" uuid="e2f6c178-619b-491e-810b-b14f2e52927a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[اسم المنتج]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="40" width="185" height="1" uuid="185dd077-a49c-48a2-b1dd-e5f582890603"/>
+			</line>
+			<staticText>
+				<reportElement x="68" y="18" width="20" height="20" uuid="d9f8a444-1518-4052-9ff5-8c9484751570"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[كود]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="18" width="28" height="20" uuid="897b6062-fc16-47eb-94ac-dabbbce076e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[سعر]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="18" width="35" height="20" uuid="6ffbebfc-8294-4aea-9b5c-38afed1fdab3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[كمية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="18" width="45" height="20" uuid="4a73c04e-4514-46f1-9ace-e97bd4121546"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[تكلفة]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" mode="Opaque" x="0" y="0" width="68" height="28" forecolor="#FFFFFF" backcolor="#999999" uuid="8722d847-bd2a-4ff2-8867-4959de4face1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_productName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" mode="Opaque" x="68" y="0" width="20" height="28" forecolor="#FFFFFF" backcolor="#999999" uuid="6877b16e-ef45-4104-bd6a-c0fec0bbab81"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_Barcode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" mode="Opaque" x="123" y="0" width="28" height="28" forecolor="#FFFFFF" backcolor="#999999" uuid="810ba8f6-9674-4388-8d0a-4172fd32e472"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_unit_price}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" mode="Opaque" x="151" y="0" width="46" height="28" forecolor="#FFFFFF" backcolor="#333333" uuid="f9945c85-2bc2-41f2-b448-356185ded11c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_Total_price}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" mode="Opaque" x="88" y="0" width="35" height="28" forecolor="#FFFFFF" backcolor="#999999" uuid="15deb9e1-3c17-4c0e-a420-6c7685d38c6b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cartsuppliers_QuantityNeeded}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="28" width="196" height="1" uuid="7e71147f-d9b6-421c-bf54-5b212ff959fa"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

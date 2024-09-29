@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="productsStoreReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="286f7df8-a8e7-443b-a80f-8c2751931213">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT
+     cart.`cartId` AS cart_cartId,
+     cart.`INID` AS cart_INID,
+     cart.`productName` AS cart_productName,
+     cart.`Barcode` AS cart_Barcode,
+     cart.`QuantityNeeded` AS cart_QuantityNeeded,
+     cart.`unit_price` AS cart_unit_price,
+     cart.`Total_price` AS cart_Total_price,
+     cart.`empname` AS cart_empname,
+     cart.`date` AS cart_date,
+     cart.`SaleType` AS cart_SaleType,
+     cart.`productPlace` AS cart_productPlace,
+     cart.`category` AS cart_category,
+     cart.`priceOfBuy` AS cart_priceOfBuy,
+     cart.`priceOnStore` AS cart_priceOnStore,
+     cart.`customerNumber` AS cart_customerNumber,
+     products.`productId` AS products_productId,
+     products.`productName` AS products_productName,
+     products.`priceOfBuy` AS products_priceOfBuy,
+     products.`priceOfSale` AS products_priceOfSale,
+     products.`Taked` AS products_Taked,
+     products.`AvailableQty` AS products_AvailableQty,
+     products.`Category` AS products_Category,
+     products.`storeName` AS products_storeName,
+     products.`Note` AS products_Note,
+     products.`priceOfMarket` AS products_priceOfMarket,
+     products.`AvailableQtyStore` AS products_AvailableQtyStore,
+     products.`QuantityWarning` AS products_QuantityWarning
+FROM
+     `cart` cart inner join
+     `products` products on cart.`productName`=products.`productName`
+]]>
+	</queryString>
+	<field name="cart_cartId" class="java.lang.Integer"/>
+	<field name="cart_INID" class="java.lang.Integer"/>
+	<field name="cart_productName" class="java.lang.String"/>
+	<field name="cart_Barcode" class="java.lang.String"/>
+	<field name="cart_QuantityNeeded" class="java.lang.Double"/>
+	<field name="cart_unit_price" class="java.lang.Double"/>
+	<field name="cart_Total_price" class="java.lang.Double"/>
+	<field name="cart_empname" class="java.lang.String"/>
+	<field name="cart_date" class="java.lang.String"/>
+	<field name="cart_SaleType" class="java.lang.String"/>
+	<field name="cart_productPlace" class="java.lang.String"/>
+	<field name="cart_category" class="java.lang.String"/>
+	<field name="cart_priceOfBuy" class="java.lang.Double"/>
+	<field name="cart_priceOnStore" class="java.lang.Double"/>
+	<field name="cart_customerNumber" class="java.lang.String"/>
+	<field name="products_productId" class="java.lang.Integer"/>
+	<field name="products_productName" class="java.lang.String"/>
+	<field name="products_priceOfBuy" class="java.lang.Double"/>
+	<field name="products_priceOfSale" class="java.lang.Double"/>
+	<field name="products_Taked" class="java.lang.Double"/>
+	<field name="products_AvailableQty" class="java.lang.Double"/>
+	<field name="products_Category" class="java.lang.String"/>
+	<field name="products_storeName" class="java.lang.String"/>
+	<field name="products_Note" class="java.lang.String"/>
+	<field name="products_priceOfMarket" class="java.lang.Double"/>
+	<field name="products_AvailableQtyStore" class="java.lang.Double"/>
+	<field name="products_QuantityWarning" class="java.lang.Double"/>
+	<group name="cart_productPlace">
+		<groupExpression><![CDATA[$F{cart_productPlace}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#006600" uuid="a804dbfd-21cd-4e74-b99f-a8db84c6d648"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cart_productPlace}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="6cc236be-115f-4137-8016-7621df811301"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="57"/>
+		</groupFooter>
+	</group>
+	<group name="cart_category">
+		<groupExpression><![CDATA[$F{cart_category}]]></groupExpression>
+		<groupHeader>
+			<band height="42">
+				<textField>
+					<reportElement style="SubTitle" x="0" y="4" width="460" height="20" uuid="e4c1dad9-a09f-488b-a316-033c4508f74d"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cart_category}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="88" y="24" width="22" height="15" uuid="80590ce4-8047-40c1-8dbc-eea6183d9a73"/>
+					<text><![CDATA[cart_QuantityNeeded]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="25175d27-43e6-442e-a13a-5b0336c677f3"/>
+				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="f1a3fcb0-fd4c-4d2a-8e85-0f09b11acad7"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Green Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="20e158c5-c0df-49c6-bbbf-f576956afdd4"/>
+				<text><![CDATA[Leaf Green SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="80412ce7-cb8d-4c31-a29e-b74c8282e8ba"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="22" height="15" uuid="07325da1-d02d-4fee-951c-8fb86d143336"/>
+				<text><![CDATA[cart_cartId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="22" y="19" width="22" height="15" uuid="99eae169-58b9-4106-9dd1-eeb4593adf85"/>
+				<text><![CDATA[cart_INID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="44" y="19" width="22" height="15" uuid="b2b68655-ea94-45de-a126-f6a5fbe3beed"/>
+				<text><![CDATA[cart_productName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="66" y="19" width="22" height="15" uuid="29fecb67-cd55-42c2-90eb-3f0ad539fe9b"/>
+				<text><![CDATA[cart_Barcode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="110" y="20" width="22" height="15" uuid="89f231d5-202a-4c36-bc78-d1d6883f4778"/>
+				<text><![CDATA[cart_unit_price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="132" y="19" width="22" height="15" uuid="01e61399-f51c-43ec-a34b-d06594e6e7b7"/>
+				<text><![CDATA[cart_Total_price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="154" y="19" width="22" height="15" uuid="db786050-6b51-48da-9287-ca139faeedd8"/>
+				<text><![CDATA[cart_empname]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="175" y="20" width="22" height="15" uuid="befbf9f9-588b-44bf-b203-9e439984d3a4"/>
+				<text><![CDATA[cart_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="198" y="19" width="22" height="15" uuid="b7e09616-0df0-4692-a6bc-dc89f4331cf1"/>
+				<text><![CDATA[cart_SaleType]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="220" y="19" width="22" height="15" uuid="9e52f7b1-7c97-4754-bce6-a77c831589a8"/>
+				<text><![CDATA[cart_priceOfBuy]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="242" y="19" width="22" height="15" uuid="0bcf60a3-34cd-41c1-a919-e5be2978d5f6"/>
+				<text><![CDATA[cart_priceOnStore]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="264" y="19" width="22" height="15" uuid="013284ce-bdb5-4dd0-8790-af2a21b462d2"/>
+				<text><![CDATA[cart_customerNumber]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="286" y="19" width="22" height="15" uuid="d8fad105-0377-4fae-960e-c433ea1eb04b"/>
+				<text><![CDATA[products_productId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="308" y="19" width="22" height="15" uuid="07ac0abf-2f8a-44e2-b17f-bd18d14999dc"/>
+				<text><![CDATA[products_productName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="330" y="19" width="22" height="15" uuid="4361c277-1bd9-4612-83a7-353f74c78b73"/>
+				<text><![CDATA[products_priceOfBuy]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="352" y="19" width="22" height="15" uuid="e1fe3cbf-077a-49f4-8bea-afd0a4140b92"/>
+				<text><![CDATA[products_priceOfSale]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="374" y="19" width="22" height="15" uuid="c9024efc-00e1-4799-ad58-24d1ee42be08"/>
+				<text><![CDATA[products_Taked]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="396" y="19" width="22" height="15" uuid="68903758-33fd-4544-b909-267da5c6340e"/>
+				<text><![CDATA[products_AvailableQty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="418" y="19" width="22" height="15" uuid="7cfb4cbb-81ce-43ab-ac90-82784651232d"/>
+				<text><![CDATA[products_Category]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="440" y="19" width="22" height="15" uuid="aed9f059-afbd-4a3c-8986-5922e5c76dfe"/>
+				<text><![CDATA[products_storeName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="462" y="19" width="22" height="15" uuid="b7867928-7ce1-4273-b24d-be7ac8e95223"/>
+				<text><![CDATA[products_Note]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="484" y="19" width="22" height="15" uuid="11999171-f263-4371-a21e-3a9d2c566847"/>
+				<text><![CDATA[products_priceOfMarket]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="506" y="19" width="22" height="15" uuid="2638ea71-8959-41c1-87da-145442950c52"/>
+				<text><![CDATA[products_AvailableQtyStore]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="528" y="19" width="22" height="15" uuid="f4cbd5d4-c7fd-4110-9732-612d32fc271e"/>
+				<text><![CDATA[products_QuantityWarning]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="22" height="15" uuid="ac9c9da6-a0f9-463e-bab7-40492883c3d0"/>
+				<textFieldExpression><![CDATA[$F{cart_cartId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="22" y="0" width="22" height="15" uuid="634786e2-3f70-46eb-bafe-023af63b753c"/>
+				<textFieldExpression><![CDATA[$F{cart_INID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="44" y="0" width="22" height="15" uuid="c217e8e7-21b5-4e6f-b829-c1b7459dc6f2"/>
+				<textFieldExpression><![CDATA[$F{cart_productName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="66" y="0" width="22" height="15" uuid="dfb8e1da-75e5-4007-a472-0d96cc24ae64"/>
+				<textFieldExpression><![CDATA[$F{cart_Barcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="88" y="0" width="242" height="15" uuid="c41a433c-8aca-4cda-b087-26c5cce5aa4f"/>
+				<textFieldExpression><![CDATA[$F{cart_QuantityNeeded}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="c5bfde66-b67e-4f8f-a9a5-6b939655b841"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="e2673a64-8129-4fda-a71a-c356c0a4e176"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="8638055a-c68a-4d01-ab4a-99eb9b682152"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="685a9249-6c8f-4555-bb32-7571cfef93bd"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

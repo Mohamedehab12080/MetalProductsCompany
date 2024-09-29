@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="paymentInvReport" language="groovy" pageWidth="220" pageHeight="842" columnWidth="210" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" uuid="7f5fb75d-f77e-4569-80f6-0bbf210a6134">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="invo_para" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     payment.`customerNumber` AS payment_customerNumber,
+     payment.`Note` AS payment_Note,
+     payment.`receiver` AS payment_receiver,
+     payment.`date` AS payment_date,
+     payment.`remainedAfter` AS payment_remainedAfter,
+     payment.`payed` AS payment_payed,
+     payment.`remainedbefor` AS payment_remainedbefor,
+     payment.`casherName` AS payment_casherName,
+     payment.`customerName` AS payment_customerName,
+     payment.`id` AS payment_id
+FROM
+     `payment` payment
+WHERE
+     payment.`id` = $P{invo_para}]]>
+	</queryString>
+	<field name="payment_customerNumber" class="java.lang.String"/>
+	<field name="payment_Note" class="java.lang.String"/>
+	<field name="payment_receiver" class="java.lang.String"/>
+	<field name="payment_date" class="java.lang.String"/>
+	<field name="payment_remainedAfter" class="java.lang.Double"/>
+	<field name="payment_payed" class="java.lang.Double"/>
+	<field name="payment_remainedbefor" class="java.lang.Double"/>
+	<field name="payment_casherName" class="java.lang.String"/>
+	<field name="payment_customerName" class="java.lang.String"/>
+	<field name="payment_id" class="java.lang.Integer"/>
+	<title>
+		<band height="521" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="33" width="166" height="153" uuid="091cfdb3-6a64-4813-96da-c1ed78d8eccd"/>
+				<imageExpression><![CDATA["lastLogo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="6" y="0" width="191" height="33" uuid="9e5f141e-a435-4e09-984f-3c5cd5ff8c66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[الشركة الحديثة لمواد البناء والعدد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="133" y="208" width="81" height="22" uuid="8dd9714d-d821-4188-a3ab-85925ab5db9b"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[فاتورة سداد:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="5" y="208" width="127" height="22" uuid="40e3b76f-b0f1-4c18-a5d8-8c9e962ea5d1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="5" y="230" width="128" height="22" uuid="a40e8006-e9a9-4d19-8261-4648a9480b9c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_customerName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="133" y="230" width="81" height="22" uuid="c346e8e6-2af3-48c9-8d4e-369df38557ca"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[عميل:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="5" y="300" width="127" height="22" uuid="f64bd68a-bbac-4671-a5df-289457f782f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_casherName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="132" y="300" width="81" height="22" uuid="f3504f44-c0da-484c-9a7f-33d0794551c5"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[كاشير:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="5" y="327" width="126" height="22" uuid="3edb187d-f4a4-4062-b5e7-18f14f5ea41a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_remainedbefor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="132" y="327" width="81" height="22" uuid="53931e2d-6147-4a2f-8ea4-ae8e26aca90c"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[المتبقي قبل:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="5" y="353" width="126" height="22" uuid="a86f0ccd-b54c-4bb1-9328-88d66dde3c59"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_payed}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="132" y="353" width="81" height="22" uuid="8d8c2379-b7c5-4e55-9ccf-82091ece7777"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[المدفوع:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="5" y="378" width="126" height="22" uuid="d294f479-2652-44f5-8c3b-5eef5647d1eb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_remainedAfter}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="132" y="378" width="81" height="22" uuid="21eb6445-ca52-4012-b5b3-4d170aa17c63"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[المتبقي بعد:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="6" y="274" width="126" height="22" uuid="cc064683-cd81-4b91-ae9a-f3aa4eeb2ed9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_receiver}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="132" y="274" width="81" height="22" uuid="eca0f18a-7924-4bce-b87e-9b152a3d2bf1"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[المستلم:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="-1" y="407" width="133" height="51" uuid="7382bf8a-8078-4e7a-85c4-2d93bc0ef458"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_Note}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="131" y="423" width="58" height="22" uuid="d079c92c-ae5b-4b58-b189-634af0d05ac2"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ملاحظة:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="0" y="186" width="214" height="22" uuid="e018d876-d01f-4f36-9d6d-556d0325285e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="32" y="495" width="149" height="22" uuid="97a8892d-2399-4904-9c23-588a644b656f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Mo_Software:01091499680]]></text>
+			</staticText>
+			<image hAlign="Right">
+				<reportElement x="0" y="495" width="32" height="22" uuid="332ad977-83b8-41b2-a537-2eb3449d0580"/>
+				<imageExpression><![CDATA["Mo_Software.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="122" y="465" width="59" height="20" uuid="d8465ee3-9fa2-4dd6-a31a-59b755851aef"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[توقيع:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="22" y="484" width="100" height="1" uuid="184fe35b-f1df-45e6-a077-5b544abecc0d"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="SubTitle" x="133" y="252" width="81" height="22" uuid="b663b337-3745-45d0-a240-4e52bc5c8175"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[رقم:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="5" y="252" width="128" height="20" uuid="cb64feec-96cd-400a-acf3-21fbae33de66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_customerNumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+</jasperReport>
